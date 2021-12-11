@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_step_screen_abc">StepScreenABC</string>
+    <string name="title_activity_step_screen_abchas_agument">StepScreenABCHasAgument</string>
+    <string name="title_activity_step_screen_abcback_to">StepScreenABCBackToA</string>
+</resources>
