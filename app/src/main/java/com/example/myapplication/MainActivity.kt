@@ -99,28 +99,6 @@ fun DefaultPreview2(onClickAction : OnExampleClick) {
 
             Text(modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),text = "A -> B -> C backTo A (has Data)",color = Color.Red)
-            Button(modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),onClick = {
-                onClickAction.onClickStepABCBackToA()
-            }) {
-                Text(text = "Example")
-            }
-
-            Text(modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),text = "A -> B -> C backTo A (has Data)",color = Color.Red)
-            Button(modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),onClick = {
-                onClickAction.onClickStepABCBackToA()
-            }) {
-                Text(text = "Example")
-            }
-
-            Text(modifier = Modifier
-                .fillMaxWidth()
                 .padding(16.dp),text = "Nested Navigation Graphs in Jetpack Compose ",color = Color.Red)
             Button(modifier = Modifier
                 .fillMaxWidth()

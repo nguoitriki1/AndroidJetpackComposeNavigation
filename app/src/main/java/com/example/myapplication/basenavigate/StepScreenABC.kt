@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
@@ -47,7 +48,7 @@ fun DefaultPreview3() {
                     .padding(16.dp), onClick = {
                     navController.navigate("screen2")
                 }) {
-
+                    Text(text = "Screen1", color = Color.White)
                 }
             }
             composable("screen2") {
@@ -56,11 +57,11 @@ fun DefaultPreview3() {
                     .padding(16.dp), onClick = {
                     navController.navigate("screen3")
                 }) {
-
+                    Text(text = "Screen2", color = Color.White)
                 }
             }
             composable("screen3") {
-                Text(text = "Screen3")
+                Text(text = "Screen3", color = Color.Black)
             }
         })
 }
