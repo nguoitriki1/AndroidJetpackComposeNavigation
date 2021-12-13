@@ -10,15 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".basenavigate.NavtigationOptionsExample"
+            android:exported="false"
+            android:label="@string/title_activity_navtigation_options_example"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
             android:name=".basenavigate.DeeplinkExample"
             android:exported="true"
             android:label="@string/title_activity_deeplink_example"
-            android:theme="@style/Theme.MyApplication.NoActionBar" >
+            android:theme="@style/Theme.MyApplication.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="www.abc.com" />
+
+                <data
+                    android:host="www.abc.com"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity

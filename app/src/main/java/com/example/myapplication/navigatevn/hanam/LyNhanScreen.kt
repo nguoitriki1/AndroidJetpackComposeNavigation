@@ -1,4 +1,4 @@
-package com.example.myapplication.navigatevn.hanoi
+package com.example.myapplication.navigatevn.hanam
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -13,7 +13,7 @@ import androidx.navigation.NavController
 
 
 @Composable()
-fun RouteHaNoiScreen(navController: NavController,routeName : String,navigateRouteName : String){
+fun LyNhanScreen(navController: NavController, routeName : String, navigateRouteName : String){
     Column(
         Modifier
             .fillMaxSize()

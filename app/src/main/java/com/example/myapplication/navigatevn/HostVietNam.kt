@@ -1,24 +1,17 @@
 package com.example.myapplication.navigatevn
 
-import android.util.Log
-import android.widget.Toast
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
-import com.example.myapplication.navigatevn.hanam.RouteHaNamScreen
-import com.example.myapplication.navigatevn.hanoi.RouteHaNoiScreen
+import com.example.myapplication.navigatevn.hanam.KimBangScreen
+import com.example.myapplication.navigatevn.hanam.LyNhanScreen
+import com.example.myapplication.navigatevn.hanam.PhuLyScreen
+import com.example.myapplication.navigatevn.hanoi.CauGiayScreen
+import com.example.myapplication.navigatevn.hanoi.ThanhXuanScreen
+import com.example.myapplication.navigatevn.hanoi.TuLiemScreen
 
 
 @Composable
@@ -32,7 +25,7 @@ fun HostVietNam(navController: NavHostController) {
         builder = {
             navigation(HaNoiRoute.CauGiay.name, VietNamRoute.HaNoi.name) {
                 composable(HaNoiRoute.CauGiay.name) {
-                    RouteHaNoiScreen(
+                    CauGiayScreen(
                         navController = navController,
                         routeName = HaNoiRoute.CauGiay.name,
                         navigateRouteName = HaNoiRoute.ThanhXuan.name
@@ -40,7 +33,7 @@ fun HostVietNam(navController: NavHostController) {
                 }
 
                 composable(HaNoiRoute.ThanhXuan.name) {
-                    RouteHaNoiScreen(
+                    ThanhXuanScreen(
                         navController = navController,
                         routeName = HaNoiRoute.ThanhXuan.name,
                         navigateRouteName = HaNoiRoute.TuLiem.name
@@ -48,7 +41,7 @@ fun HostVietNam(navController: NavHostController) {
                 }
 
                 composable(HaNoiRoute.TuLiem.name) {
-                    RouteHaNoiScreen(
+                    TuLiemScreen(
                         navController = navController,
                         routeName = HaNoiRoute.TuLiem.name,
                         navigateRouteName = VietNamRoute.HaNam.name
@@ -60,32 +53,26 @@ fun HostVietNam(navController: NavHostController) {
 
             navigation(HaNamRoute.KimBang.name, VietNamRoute.HaNam.name) {
                 composable(HaNamRoute.KimBang.name) {
-                    RouteHaNamScreen(
+                    KimBangScreen(
                         navController = navController,
                         routeName = HaNamRoute.KimBang.name,
                         navigateRouteName = HaNamRoute.LyNhan.name
                     )
                 }
                 composable(HaNamRoute.LyNhan.name) {
-                    RouteHaNamScreen(
+                    LyNhanScreen(
                         navController = navController,
                         routeName = HaNamRoute.LyNhan.name,
                         navigateRouteName = HaNamRoute.PhuLy.name
                     )
                 }
                 composable(HaNamRoute.PhuLy.name) {
-                    Column(
-                        Modifier
-                            .fillMaxSize()
-                            .background(Color.Yellow), Arrangement.Center
-                    ) {
-                        Text(text = HaNamRoute.PhuLy.name)
-                        Button(onClick = {
-                            Toast.makeText(context, "End Route", Toast.LENGTH_SHORT).show()
-                        }) {
-
-                        }
-                    }
+                    PhuLyScreen(
+                        context = context,
+                        navController = navController,
+                        routeName = HaNamRoute.PhuLy.name,
+                        navigateRouteName = null
+                    )
                 }
             }
         })

@@ -22,10 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.app.TaskStackBuilder
 import androidx.core.net.toUri
-import com.example.myapplication.basenavigate.DeeplinkExample
-import com.example.myapplication.basenavigate.StepScreenABC
-import com.example.myapplication.basenavigate.StepScreenABCBackToA
-import com.example.myapplication.basenavigate.StepScreenABCHasAgument
+import com.example.myapplication.basenavigate.*
 import com.example.myapplication.navigatevn.NavigateVietNamExample
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
@@ -74,6 +71,10 @@ class MainActivity : ComponentActivity(), OnExampleClick {
     override fun onClickNestedNavigation() {
         startActivity(Intent(this@MainActivity,NavigateVietNamExample::class.java))
     }
+
+    override fun onClickNavigationOptions() {
+        startActivity(Intent(this@MainActivity,NavtigationOptionsExample::class.java))
+    }
 }
 
 interface OnExampleClick{
@@ -82,6 +83,7 @@ interface OnExampleClick{
     fun onClickStepABCBackToA()
     fun onClickDeepLinkExample()
     fun onClickNestedNavigation()
+    fun onClickNavigationOptions()
 }
 
 
@@ -144,6 +146,17 @@ fun DefaultPreview2(onClickAction : OnExampleClick) {
                 onClickAction.onClickNestedNavigation()
             }) {
                 Text(text = "Example Nested Navigation")
+            }
+
+            Text(modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),text = "Navigate Options ",color = Color.Red)
+            Button(modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),onClick = {
+                onClickAction.onClickNavigationOptions()
+            }) {
+                Text(text = "Navigate Options Example")
             }
         }
     }
