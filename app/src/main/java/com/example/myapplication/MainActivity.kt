@@ -1,7 +1,9 @@
 package com.example.myapplication
 
+import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -18,6 +20,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.app.TaskStackBuilder
+import androidx.core.net.toUri
+import com.example.myapplication.basenavigate.DeeplinkExample
 import com.example.myapplication.basenavigate.StepScreenABC
 import com.example.myapplication.basenavigate.StepScreenABCBackToA
 import com.example.myapplication.basenavigate.StepScreenABCHasAgument
@@ -25,6 +30,7 @@ import com.example.myapplication.navigatevn.NavigateVietNamExample
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity(), OnExampleClick {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -46,6 +52,25 @@ class MainActivity : ComponentActivity(), OnExampleClick {
         startActivity(Intent(this@MainActivity,StepScreenABCBackToA::class.java))
     }
 
+    override fun onClickDeepLinkExample() {
+        val data = "Hello I'm Main Activity send Deeplink"
+        val deepLinkIntent = Intent(
+            Intent.ACTION_VIEW,
+            "https://www.abc.com/$data".toUri(),
+            this,
+            DeeplinkExample::class.java
+        )
+
+        val deepLinkPendingIntent: PendingIntent? = TaskStackBuilder.create(this).run {
+            addNextIntentWithParentStack(deepLinkIntent)
+            getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+
+        deepLinkPendingIntent?.send()
+
+//        startActivity(deepLinkIntent)
+    }
+
     override fun onClickNestedNavigation() {
         startActivity(Intent(this@MainActivity,NavigateVietNamExample::class.java))
     }
@@ -55,8 +80,10 @@ interface OnExampleClick{
     fun onClickStepABC()
     fun onClickStepABCHasArgument()
     fun onClickStepABCBackToA()
+    fun onClickDeepLinkExample()
     fun onClickNestedNavigation()
 }
+
 
 @Composable
 fun DefaultPreview2(onClickAction : OnExampleClick) {
@@ -95,6 +122,17 @@ fun DefaultPreview2(onClickAction : OnExampleClick) {
                 onClickAction.onClickStepABCBackToA()
             }) {
                 Text(text = "Example")
+            }
+
+            Text(modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),text = "Deeplink intent example ",color = Color.Red)
+            Button(modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),onClick = {
+                onClickAction.onClickDeepLinkExample()
+            }) {
+                Text(text = "Example Nested Navigation")
             }
 
             Text(modifier = Modifier
