@@ -10,6 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".basenavigate.BottomSheetNavSample"
+            android:exported="true"
+            android:label="@string/title_activity_two_frame_example"
+            android:theme="@style/Theme.MyApplication.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".basenavigate.TwoFrameExample"
+            android:exported="true"
+            android:label="@string/title_activity_two_frame_example"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
             android:name=".basenavigate.NavtigationOptionsExample"
             android:exported="false"
             android:label="@string/title_activity_navtigation_options_example"
@@ -21,7 +37,6 @@
             android:theme="@style/Theme.MyApplication.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -50,11 +65,6 @@
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.MyApplication.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".navigatevn.NavigateVietNamExample"

@@ -7,4 +7,5 @@
     <string name="title_activity_deeplink_example">DeeplinkExample</string>
     <string name="title_activity_navtigation_options_example">NavtigationOptionsExample</string>
     <string name="title_activity_share_element">ShareElementActivity</string>
+    <string name="title_activity_two_frame_example">TwoFrameExample</string>
 </resources>
