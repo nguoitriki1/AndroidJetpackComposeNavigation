@@ -46,13 +46,11 @@ fun DefaultPreview7(activity: ComponentActivity) {
     val context = LocalContext.current
 
     val navOptions = navOptions {
-        val navOptionBuilder = this
-//        navOptionBuilder.popUpTo()
-        navOptionBuilder.anim {
-            this.enter
-            this.exit
-            this.popEnter
-            this.popExit
+        this.anim {
+            this.enter = R.anim.left_slide_animation
+            this.exit = R.anim.right_slide_animation
+            this.popEnter = R.anim.left_slide_animation
+            this.popExit = R.anim.right_slide_animation
         }
     }
 
@@ -94,7 +92,7 @@ fun DefaultPreview7(activity: ComponentActivity) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.Yellow)
+                        .background(Color.Green)
                         .padding(32.dp),
                     Arrangement.Center,
                     Alignment.CenterHorizontally

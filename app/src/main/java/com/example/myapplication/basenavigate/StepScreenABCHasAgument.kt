@@ -64,18 +64,23 @@ fun DefaultPreview4() {
                 "screen2/{data}",
                 arguments = listOf(navArgument("data") { type = NavType.StringType })
             ) {
-                val args = it.arguments?.getString("data","nothing")
-                Log.d("abc","$args")
+                val args = it.arguments?.getString("data", "nothing")
                 Button(modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp), onClick = {
-                    navController.navigate("screen3")
+                    val dataSendToScreen3 = "dataSendFromScreen2ToScreen3"
+                    navController.navigate("screen3?user=$dataSendToScreen3")
                 }) {
                     Text(text = "Screen2", color = Color.White)
                 }
             }
-            composable("screen3") {
+
+            composable("screen3?user={user}", arguments = listOf(navArgument("user") {
+                nullable = true
+            })) {
+                val dataSendFromScreen2 = it.arguments?.getString("user", null)
                 Text(text = "screen3", color = Color.Black)
             }
+
         })
 }
