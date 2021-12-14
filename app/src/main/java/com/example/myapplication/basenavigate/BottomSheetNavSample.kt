@@ -58,7 +58,7 @@ fun BottomSheetNavDemo() {
                 bottomSheet(Destinations.Sheet + "?arg={arg}") { backstackEntry ->
                     val arg = backstackEntry.arguments?.getString("arg") ?: "Missing argument :("
                     BottomSheet(
-                        showFeed = { navController.navigate(Destinations.Feed) },
+                        showFeed = { navController.navigate(Destinations.Feed)   },
                         showAnotherSheet = {
                             navController.navigate(Destinations.Sheet + "?arg=${UUID.randomUUID()}")
                         },
